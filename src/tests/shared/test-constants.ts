@@ -1,3 +1,11 @@
+export const unsupportedDataTypes = [
+    false,
+    true,
+    undefined,
+    null,
+    [],
+];
+
 export const correctFENStrings = [
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ - 3 2",
     "8/8/8/2k5/2pP4/8/B7/4K3 b - d3 0 3",
@@ -39,22 +47,25 @@ export const inCorrectFENStrings = [
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ -",
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ - 3",
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b  - 3 2",
-    "r6r/1b2k1bq/8/8/7B/8/R3K2R b  - 3 2",
-    "r6r/1b2k1bq/8/8/7B/8/8/RR2K2R b  - 3 2",
-    "r6r/1b2k1bq/8/8/7B/8/8/R3Q2R b  - 3 2",
-    "rr5r/1b2k1bq/8/8/7B/8/8/R3K2R b  - 3 2",
-    "r6r/1b2n1bq/8/8/7B/8/8/R3K2R b  - 3 2",
-    "r6r/1b2k1bq/8/8/7B/9/8/R3K2R b  - 3 2",
-    "r6r/1b2k1bq/8/8/7B/8/8/R4K2R b  - 3 2",
-    "",
-    "///////",
     "            ",
     "",
-    false,
-    true,
-    undefined,
-    null,
+
+    ...unsupportedDataTypes,
 ];
+
+export const inCorrectPiecePlacements = [
+    "r6r/1b2k1bq/8/8/7B/8/R3K2R",
+    "r6r/1b2k1bq/8/8/7B/8/8/RR2K2R",
+    "r6r/1b2k1bq/8/8/7B/8/8/R3Q2R",
+    "rr5r/1b2k1bq/8/8/7B/8/8/R3K2R",
+    "r6r/1b2n1bq/8/8/7B/8/8/R3K2R",
+    "r6r/1b2k1bq/8/8/7B/9/8/R3K2R",
+    "r6r/1b2k1bq/8/8/7B/8/8/R4K2R",
+    "",
+    "///////",
+    
+    ...unsupportedDataTypes,
+]
 
 export const validNonEmptyArrays = [
     [1],
