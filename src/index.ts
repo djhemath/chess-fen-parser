@@ -19,6 +19,14 @@ export class FENParser {
             return false;
         }
 
+        const fieldsArray: string[] = fields as string[];
+
+        const ranks = ChessValidators.isPiecePlacementValid(fieldsArray[0]);
+
+        if(! DataValidator.isNonEmptyArray(ranks)) {
+            return false;
+        }
+
         return true;
     }
 
