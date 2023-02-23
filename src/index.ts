@@ -27,6 +27,10 @@ export class FENParser {
             return false;
         }
 
+        if(! ChessValidators.isActiveColorValid(fieldsArray[1])) {
+            return false;
+        }
+
         return true;
     }
 
