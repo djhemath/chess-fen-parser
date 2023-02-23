@@ -1,4 +1,6 @@
 import { FENParserConfig } from "./shared/types";
+import { ChessValidators } from "./shared/chess-validators";
+import { DataValidator } from "./shared/data-validator";
 
 export class FENParser {
     private fen: string = "";
@@ -11,6 +13,12 @@ export class FENParser {
 
     public isValid(): boolean {
         // Do validations
+        const fields = ChessValidators.isFenStringValid(this.fen);
+
+        if(! DataValidator.isNonEmptyArray(fields)) {
+            return false;
+        }
+
         return true;
     }
 
