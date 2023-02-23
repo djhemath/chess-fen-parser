@@ -46,3 +46,22 @@ export const inCorrectFENStrings = [
     undefined,
     null,
 ];
+
+export const validNonEmptyArrays = [
+    [1],
+    [""],
+    [1, 2, "a", true],
+    [true],
+    [false],
+    [null],
+    [undefined],
+];
+
+export const invalidArrays = [
+    true,
+    false,
+    undefined,
+    null,
+    [],
+    new Array(),
+];
