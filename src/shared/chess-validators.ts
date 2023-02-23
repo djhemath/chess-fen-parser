@@ -143,4 +143,13 @@ export class ChessValidators {
 
         return true;
     }
+
+    static isActiveColorValid(activeColor: string): boolean {
+        // should be either 'w' or 'b'
+        if(activeColor !== 'w' && activeColor !== 'b') {
+            return false;
+        }
+
+        return true;
+    }
 }
