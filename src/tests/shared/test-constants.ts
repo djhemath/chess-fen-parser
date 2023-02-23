@@ -1,6 +1,4 @@
-import { ChessValidators } from "../shared/chess-validators";
-
-const correctFENStrings = [
+export const correctFENStrings = [
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ - 3 2",
     "8/8/8/2k5/2pP4/8/B7/4K3 b - d3 0 3",
     "r1bqkbnr/pppppppp/n7/8/8/P7/1PPPPPPP/RNBQKBNR w KQkq - 2 2",
@@ -34,7 +32,7 @@ const correctFENStrings = [
     "8/8/8/4p1K1/2k1P3/8/8/8 b - - 0 1",
 ];
 
-const inCorrectFENStrings = [
+export const inCorrectFENStrings = [
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R",
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b",
     "r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ",
@@ -48,27 +46,3 @@ const inCorrectFENStrings = [
     undefined,
     null,
 ];
-
-describe("isFenStringValid", () => {
-    test("should be valid", () => {
-        correctFENStrings.forEach(fen => {
-            const actual = ChessValidators.isFenStringValid(fen);
-            const expected = fen.split(" ");
-        
-            expect(actual).toBeTruthy();
-            expect(actual).toEqual(expected);
-        });
-
-    });
-
-    test("should be invalid", () => {
-        inCorrectFENStrings.forEach(fen => {
-            const actual = ChessValidators.isFenStringValid(fen as any);
-            const expected = false;
-
-            expect(actual).toBeFalsy();
-            expect(actual).toEqual(expected);
-        });
-
-    });
-});
