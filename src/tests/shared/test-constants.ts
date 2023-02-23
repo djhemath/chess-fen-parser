@@ -67,6 +67,18 @@ export const inCorrectPiecePlacements = [
     ...unsupportedDataTypes,
 ]
 
+export const inCorrectActiveColors = [
+    "a",
+    "c",
+    "abc",
+    " KQ",
+    "B",
+    "W",
+    "-",
+
+    ...unsupportedDataTypes,
+]
+
 export const validNonEmptyArrays = [
     [1],
     [""],

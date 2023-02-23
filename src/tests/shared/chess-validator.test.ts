@@ -1,5 +1,5 @@
 import { ChessValidators } from "../../shared/chess-validators";
-import { correctFENStrings, inCorrectFENStrings, inCorrectPiecePlacements } from "./test-constants";
+import { correctFENStrings, inCorrectActiveColors, inCorrectFENStrings, inCorrectPiecePlacements } from "./test-constants";
 
 describe("isFenStringValid", () => {
     test("should be valid", () => {
@@ -47,5 +47,28 @@ describe("isPiecePlacementValid", () => {
             expect(actual).toEqual(expected);
         });
 
+    });
+});
+
+describe("isActiveColorValid", () => {
+    test("should return true on valid active colors", () => {
+        [
+            "w",
+            "b"
+        ].forEach(activeColor => {
+            const actual = ChessValidators.isActiveColorValid(activeColor);
+            const expected = true;
+
+            expect(actual).toBe(expected);
+        });
+    });
+
+    test("should return false on invalid active colors", () => {
+        inCorrectActiveColors.forEach(activeColor => {
+            const actual = ChessValidators.isActiveColorValid(activeColor as any);
+            const expected = false;
+
+            expect(actual).toBe(expected);
+        });
     });
 });
