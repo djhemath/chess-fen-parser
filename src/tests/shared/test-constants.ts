@@ -79,6 +79,19 @@ export const inCorrectActiveColors = [
     ...unsupportedDataTypes,
 ]
 
+export const incorrectCastlingAvailability = [
+    "a",
+    "1",
+    "abc",
+    "a1",
+    "kqKQk",
+    "kqKK",
+    "---",
+    "-----",
+
+    ...unsupportedDataTypes,
+];
+
 export const validNonEmptyArrays = [
     [1],
     [""],
