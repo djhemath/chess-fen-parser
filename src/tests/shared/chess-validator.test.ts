@@ -1,5 +1,5 @@
 import { ChessValidators } from "../../shared/chess-validators";
-import { correctFENStrings, inCorrectActiveColors, incorrectCastlingAvailability, inCorrectFENStrings, inCorrectPiecePlacements } from "./test-constants";
+import { correctFENStrings, inCorrectActiveColors, incorrectCastlingAvailability, incorrectEnPassantTargets, incorrectEnPassantTargetsForBlack, incorrectEnPassantTargetsForWhite, inCorrectFENStrings, inCorrectPiecePlacements } from "./test-constants";
 
 describe("isFenStringValid", () => {
     test("should be valid", () => {
@@ -87,6 +87,48 @@ describe("isCastlingAvailabilityValid", () => {
     test('should be invalid', () => {
         incorrectCastlingAvailability.forEach(castlingAvailability => {
             const actual = ChessValidators.isCastlingAvailabilityValid(castlingAvailability as any);
+            const expected = false;
+        
+            expect(actual).toBeFalsy();
+            expect(actual).toEqual(expected);
+        });
+    });
+});
+
+describe("isEnPassantTargetValid", () => {
+    test('should be valid', () => {
+        correctFENStrings.forEach(fen => {
+            const activeColor = fen.split(" ")[1];
+            const actual = ChessValidators.isEnPassantTargetValid(fen.split(" ")[3], activeColor);
+            const expected = true;
+        
+            expect(actual).toBeTruthy();
+            expect(actual).toEqual(expected);
+        });
+    });
+
+    test('should be invalid', () => {
+        incorrectEnPassantTargets.forEach(enPassantTarget => {
+            const activeColor = (Math.random() * 10) % 2 === 0 ? 'w': 'b';
+            const actual = ChessValidators.isEnPassantTargetValid(enPassantTarget as any, activeColor);
+            const expected = false;
+        
+            expect(actual).toBeFalsy();
+            expect(actual).toEqual(expected);
+        });
+
+        incorrectEnPassantTargetsForBlack.forEach(enPassantTarget => {
+            const activeColor = 'b';
+            const actual = ChessValidators.isEnPassantTargetValid(enPassantTarget as any, activeColor);
+            const expected = false;
+        
+            expect(actual).toBeFalsy();
+            expect(actual).toEqual(expected);
+        });
+
+        incorrectEnPassantTargetsForWhite.forEach(enPassantTarget => {
+            const activeColor = 'w';
+            const actual = ChessValidators.isEnPassantTargetValid(enPassantTarget as any, activeColor);
             const expected = false;
         
             expect(actual).toBeFalsy();

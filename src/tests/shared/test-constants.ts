@@ -92,6 +92,49 @@ export const incorrectCastlingAvailability = [
     ...unsupportedDataTypes,
 ];
 
+export const incorrectEnPassantTargets = [
+    "",
+    " ",
+    "-1",
+    "- ",
+    " -",
+    "a1",
+    "b2",
+    "c4",
+    "d5",
+    "e7",
+    "g8",
+    "h7",
+    "a",
+    "h",
+    "3",
+    "6",
+
+    ...unsupportedDataTypes,
+];
+
+export const incorrectEnPassantTargetsForBlack = [
+    "a6",
+    "b6",
+    "c6",
+    "d6",
+    "e6",
+    "f6",
+    "g6",
+    "h6"
+];
+
+export const incorrectEnPassantTargetsForWhite = [
+    "a3",
+    "b3",
+    "c3",
+    "d3",
+    "e3",
+    "f3",
+    "g3",
+    "h3"
+];
+
 export const validNonEmptyArrays = [
     [1],
     [""],
