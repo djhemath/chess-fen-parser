@@ -35,6 +35,10 @@ export class FENParser {
             return false;
         }
 
+        if(! ChessValidators.isEnPassantTargetValid(fieldsArray[3], fieldsArray[1])) {
+            return false
+        }
+
         return true;
     }
 
