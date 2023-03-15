@@ -31,6 +31,10 @@ export class FENParser {
             return false;
         }
 
+        if(! ChessValidators.isCastlingAvailabilityValid(fieldsArray[2])) {
+            return false;
+        }
+
         return true;
     }
 
