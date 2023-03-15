@@ -187,4 +187,31 @@ export class ChessValidators {
 
         return true;
     }
+
+    static isEnPassantTargetValid(enPassantTarget: string, activeColor: string): boolean {
+        if(!enPassantTarget || typeof enPassantTarget !== "string" || enPassantTarget.length === 0) {
+            return false;
+        }
+
+        // If '-' is present, the string should not contain any other characters
+        if(enPassantTarget.includes("-")) {
+            if(enPassantTarget.length > 1) {
+                return false;
+            }
+        } else {
+            // If there is actual en passant target, it should be either 3th rank for white and 6th rank for black
+            const thirdRank = ['a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3'];
+            const sixthRank = ['a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6'];
+
+            if(activeColor === 'w' && (!sixthRank.includes(enPassantTarget))) {
+                return false;
+            }
+
+            if(activeColor === 'b' && (!thirdRank.includes(enPassantTarget))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
