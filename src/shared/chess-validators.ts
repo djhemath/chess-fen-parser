@@ -152,4 +152,39 @@ export class ChessValidators {
 
         return true;
     }
+
+    static isCastlingAvailabilityValid(castlingAvailability: string): boolean {
+        // It should only contain following characters - K,Q,k,q,-
+        const castlingAvailabilityRegex = /^[KQkq\-]+$/;
+        if(!castlingAvailabilityRegex.test(castlingAvailability)) {
+            return false;
+        }
+
+        // Maximum possible length is 4 and Minimum is 1
+        if(castlingAvailability.length > 4 || castlingAvailability.length === 0) {
+            return false;
+        }
+
+        // If '-' is present, the string should not contain any other characters
+        if(castlingAvailability.includes("-") && castlingAvailability.length > 1) {
+            return false;
+        }
+
+        // Characters K,Q,k,q shouldn't repeat
+        if(!castlingAvailability.includes("-")) {
+            const castlingSideCountMap: any = {};
+
+            for(let i=0; i<castlingAvailability.length; i++) {
+                const character = castlingAvailability[i];
+
+                if(castlingSideCountMap[character] === undefined && castlingSideCountMap[character] !== 1) {
+                    castlingSideCountMap[character] = 1;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
