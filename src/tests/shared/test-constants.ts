@@ -135,6 +135,27 @@ export const incorrectEnPassantTargetsForWhite = [
     "h3"
 ];
 
+export const incorrectHalfMoveClocks = [
+    "",
+    " ",
+    "a",
+    "abc",
+    "a ",
+    "1 ",
+    "5 ",
+    " 3",
+    " 19",
+
+    ...unsupportedDataTypes,
+];
+
+export const incorrectHalfMoveClocksInStartingPosition = [
+    "1",
+    "20",
+    "00",
+    "-1",
+];
+
 export const validNonEmptyArrays = [
     [1],
     [""],

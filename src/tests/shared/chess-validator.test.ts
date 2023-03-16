@@ -1,5 +1,6 @@
 import { ChessValidators } from "../../shared/chess-validators";
-import { correctFENStrings, inCorrectActiveColors, incorrectCastlingAvailability, incorrectEnPassantTargets, incorrectEnPassantTargetsForBlack, incorrectEnPassantTargetsForWhite, inCorrectFENStrings, inCorrectPiecePlacements } from "./test-constants";
+import { STARTING_POSITION } from "../../shared/constants";
+import { correctFENStrings, inCorrectActiveColors, incorrectCastlingAvailability, incorrectEnPassantTargets, incorrectEnPassantTargetsForBlack, incorrectEnPassantTargetsForWhite, inCorrectFENStrings, incorrectHalfMoveClocks, incorrectHalfMoveClocksInStartingPosition, inCorrectPiecePlacements } from "./test-constants";
 
 describe("isFenStringValid", () => {
     test("should be valid", () => {
@@ -129,6 +130,36 @@ describe("isEnPassantTargetValid", () => {
         incorrectEnPassantTargetsForWhite.forEach(enPassantTarget => {
             const activeColor = 'w';
             const actual = ChessValidators.isEnPassantTargetValid(enPassantTarget as any, activeColor);
+            const expected = false;
+        
+            expect(actual).toBeFalsy();
+            expect(actual).toEqual(expected);
+        });
+    });
+});
+
+describe("isHalfMoveClockValid", () => {
+    test('should be valid', () => {
+        correctFENStrings.forEach(fen => {
+            const actual = ChessValidators.isHalfMoveClockValid(fen.split(" ")[4], fen.split(" ")[0]);
+            const expected = true;
+        
+            expect(actual).toBeTruthy();
+            expect(actual).toEqual(expected);
+        });
+    });
+
+    test('should be invalid', () => {
+        incorrectHalfMoveClocks.forEach(halfMoveClock => {
+            const actual = ChessValidators.isHalfMoveClockValid(halfMoveClock as any, "");
+            const expected = false;
+        
+            expect(actual).toBeFalsy();
+            expect(actual).toEqual(expected);
+        });
+
+        incorrectHalfMoveClocksInStartingPosition.forEach(halfMoveClock => {
+            const actual = ChessValidators.isHalfMoveClockValid(halfMoveClock as any, STARTING_POSITION);
             const expected = false;
         
             expect(actual).toBeFalsy();
