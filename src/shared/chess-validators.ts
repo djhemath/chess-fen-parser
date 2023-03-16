@@ -236,4 +236,28 @@ export class ChessValidators {
 
         return true
     }
+
+    static isFullMoveClockValid(fullMoveClock: string, concatenatedRanks: string): boolean {
+        if(!fullMoveClock || typeof fullMoveClock !== "string" || fullMoveClock.length === 0) {
+            return false;
+        }
+
+        if(!ONLY_NUMBER.test(fullMoveClock)) {
+            return false;
+        } else {
+            // It shouldn't be 0
+            if(Number(fullMoveClock) === 0) {
+                return false;
+            }
+        }
+
+        // It should be 1 if it's the starting position
+        if(concatenatedRanks === STARTING_POSITION) {
+            if(fullMoveClock !== '1') {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
