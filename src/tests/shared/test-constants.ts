@@ -156,6 +156,19 @@ export const incorrectHalfMoveClocksInStartingPosition = [
     "-1",
 ];
 
+export const incorrectFullMoveClocks = [
+    "0",
+
+    ...incorrectHalfMoveClocks,
+];
+
+export const incorrectFullMoveClocksInStartingPosition = [
+    "0",
+    "20",
+    "00",
+    "-1",
+];
+
 export const validNonEmptyArrays = [
     [1],
     [""],
