@@ -43,6 +43,10 @@ export class FENParser {
             return false;
         }
 
+        if(! ChessValidators.isFullMoveClockValid(fieldsArray[5], fieldsArray[0])) {
+            return false;
+        }
+
         return true;
     }
 
