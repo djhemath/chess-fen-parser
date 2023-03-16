@@ -1,3 +1,5 @@
+import { ONLY_NUMBER, STARTING_POSITION } from "./constants";
+
 export class ChessValidators {
     static isFenStringValid(fen: string): (boolean | string[]) {
         // Shouldn't be undefined, null, empty string
@@ -213,5 +215,25 @@ export class ChessValidators {
         }
 
         return true;
+    }
+
+    static isHalfMoveClockValid(halfMoveClock: string, concatenatedRanks: string): boolean {
+        if(!halfMoveClock || typeof halfMoveClock !== "string" || halfMoveClock.length === 0) {
+            return false;
+        }
+
+        // It should be number
+        if(!(ONLY_NUMBER.test(halfMoveClock))) {
+            return false;
+        }
+
+        // It should be 0 if it's the starting position
+        if(concatenatedRanks === STARTING_POSITION) {
+            if(halfMoveClock !== '0') {
+                return false;
+            }
+        }
+
+        return true
     }
 }
