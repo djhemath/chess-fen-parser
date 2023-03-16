@@ -39,6 +39,10 @@ export class FENParser {
             return false
         }
 
+        if(! ChessValidators.isHalfMoveClockValid(fieldsArray[4], fieldsArray[0])) {
+            return false;
+        }
+
         return true;
     }
 
